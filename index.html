@@ -5,283 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أعمال أحمد بن بريك</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap');
-
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            min-height: 100vh;
-            width: 100vw;
-            overflow-x: hidden;
+            background-color: #0d1117;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            background-color: #0f172a;
-            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        /* خلفية مدمجة بحواف ناعمة */
-        .bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .container {
             width: 100%;
-            height: 100%;
-            z-index: 1;
-            display: flex;
-        }
-
-        .bg-half {
-            flex: 1;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.35) contrast(1.1) blur(4px);
-            opacity: 0.7;
-        }
-
-        .bg-left {
-            background-image: url('img1.jpg');
-        }
-
-        .bg-right {
-            background-image: url('img2.jpg');
-        }
-
-        /* تأثير ألوان خلفية Google Photos */
-        .overlay-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .circle-shape {
-            position: absolute;
-            border-radius: 50%;
-            mix-blend-mode: screen;
-            opacity: 0.5;
-            filter: blur(50px);
-            animation: float 8s infinite alternate ease-in-out;
-        }
-
-        .shape-red { width: 350px; height: 350px; background: #EA4335; top: -40px; right: 10%; }
-        .shape-yellow { width: 400px; height: 400px; background: #FBBC05; top: 20%; left: 5%; animation-delay: -2s; }
-        .shape-green { width: 420px; height: 420px; background: #34A853; bottom: -60px; right: 10%; animation-delay: -4s; }
-        .shape-blue { width: 380px; height: 380px; background: #4285F4; bottom: 5%; left: -30px; animation-delay: -1s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(25px, 30px) scale(1.05); }
-        }
-
-        /* البطاقة الرئيسية */
-        .main-card {
-            position: relative;
-            z-index: 10;
-            width: 90%;
-            max-width: 480px;
-            padding: 35px 20px;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 28px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            max-width: 400px;
+            background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+            border: 1px solid #30363d;
+            border-radius: 24px;
+            padding: 24px 16px;
             text-align: center;
-            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         h1 {
-            font-size: 2.3rem;
-            font-weight: 900;
+            font-size: 26px;
+            font-weight: 800;
             margin-bottom: 25px;
-            color: #ffffff;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            line-height: 1.3;
         }
 
-        /* شبكة الصور الدائرية */
-        .photos-container {
+        /* حاوية الدوائر المتقاطعة */
+        .circles-container {
             position: relative;
             width: 260px;
             height: 260px;
-            margin: 0 auto 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0 auto 30px auto;
         }
 
-        .photo-circle {
+        .circle-item {
             position: absolute;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .photo-main {
-            width: 150px;
-            height: 150px;
-            z-index: 5;
-            border: 4px solid #FBBC05;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .photo-top-left {
-            width: 95px;
-            height: 95px;
-            top: 5px;
-            left: 5px;
-            z-index: 4;
-            border: 3px solid #EA4335;
-        }
-
-        .photo-top-right {
-            width: 95px;
-            height: 95px;
-            top: 10px;
-            right: 5px;
-            z-index: 3;
-            border: 3px solid #4285F4;
-        }
-
-        .photo-bottom-left {
             width: 90px;
             height: 90px;
-            bottom: 10px;
-            left: 10px;
-            z-index: 3;
-            border: 3px solid #34A853;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid transparent;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background-color: #21262d;
         }
 
-        .photo-bottom-right {
-            width: 100px;
-            height: 100px;
-            bottom: 5px;
-            right: 5px;
-            z-index: 4;
-            border: 3px solid #FF715B;
-        }
-
-        .photo-circle:hover {
-            transform: scale(1.1) translate(0, 0) !important;
-            z-index: 10;
-        }
-
-        /* مربع النصوص والزر */
-        .info-box {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .info-text {
-            font-size: 1.15rem;
-            font-weight: 700;
-            line-height: 1.6;
-            color: #f1f5f9;
-        }
-
-        .download-btn {
-            display: block;
+        .circle-item img {
             width: 100%;
-            padding: 15px 20px;
-            background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
-            color: #0d1b2a;
-            font-size: 1.2rem;
-            font-weight: 900;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* تحديد مواضع وألوان إطارات الدوائر الـ 5 */
+        .c-top-left {
+            top: 10px;
+            left: 25px;
+            border-color: #ea4335; /* أحمر */
+        }
+
+        .c-top-right {
+            top: 10px;
+            right: 25px;
+            border-color: #4285f4; /* أزرق */
+        }
+
+        .c-center {
+            top: 85px;
+            left: 85px;
+            width: 90px;
+            height: 90px;
+            border-color: #fbbc05; /* أصفر */
+            z-index: 2;
+        }
+
+        .c-bottom-left {
+            bottom: 10px;
+            left: 25px;
+            border-color: #34a853; /* أخضر */
+        }
+
+        .c-bottom-right {
+            bottom: 10px;
+            right: 25px;
+            border-color: #ff6d00; /* برتقالي */
+        }
+
+        /* كارت الوصف */
+        .info-card {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #c9d1d9;
+        }
+
+        /* أزرار التحميل */
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(90deg, #ff9100, #ff6d00);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(251, 133, 0, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 109, 0, 0.4);
             margin-bottom: 15px;
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(251, 133, 0, 0.6);
-        }
-
-        .direct-link-container {
-            word-break: break-all;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px;
+        .btn-secondary {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            color: #8b949e;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 8px;
             border-radius: 10px;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-        }
-
-        .direct-link-title {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            margin-bottom: 4px;
-        }
-
-        .direct-link {
-            color: #38bdf8;
-            font-size: 0.85rem;
-            text-decoration: underline;
+            border: 1px dashed #30363d;
         }
     </style>
 </head>
 <body>
 
-    <!-- خلفية الصفحة -->
-    <div class="bg-container">
-        <div class="bg-half bg-left"></div>
-        <div class="bg-half bg-right"></div>
-    </div>
-
-    <!-- دوائر خلفية زاهية -->
-    <div class="overlay-shapes">
-        <div class="circle-shape shape-red"></div>
-        <div class="circle-shape shape-yellow"></div>
-        <div class="circle-shape shape-green"></div>
-        <div class="circle-shape shape-blue"></div>
-    </div>
-
-    <!-- البطاقة الأساسية -->
-    <div class="main-card">
+    <div class="container">
         <h1>أعمال أحمد بن بريك</h1>
 
-        <!-- الدوائر التي تظهر بها الصور -->
-        <div class="photos-container">
-            <img src="img1.jpg" alt="أحمد بن بريك" class="photo-circle photo-main">
-            <img src="img2.jpg" alt="أحمد بن بريك" class="photo-circle photo-top-left">
-            <img src="img1.jpg" alt="أحمد بن بريك" class="photo-circle photo-top-right">
-            <img src="img2.jpg" alt="أحمد بن بريك" class="photo-circle photo-bottom-left">
-            <img src="img1.jpg" alt="أحمد بن بريك" class="photo-circle photo-bottom-right">
+        <!-- قسم الدوائر الخمس -->
+        <div class="circles-container">
+            <!-- الدائرة العليا اليسرى (إطار أحمر) -->
+            <div class="circle-item c-top-left">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1eb12AcnFyQ1lhb2efbfRzc3L/2wBDASEREhgUGCcaGi2AODQ4b29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb2L/wAARCAD2AMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLR ChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6 goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna 4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIR0000030=" alt="أحمد بن بريك">
+            </div>
+
+            <!-- الدائرة العليا اليمنى (إطار أزرق) -->
+            <div class="circle-item c-top-right">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1eb12AcnFyQ1lhb2efbfRzc3L/2wBDASEREhgUGCcaGi2AODQ4b29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb2L/wAARCAD2AMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLR ChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6 goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna 4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIR0000030=" alt="أحمد بن بريك">
+            </div>
+
+            <!-- الدائرة الوسطى (إطار أصفر) -->
+            <div class="circle-item c-center">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1eb12AcnFyQ1lhb2efbfRzc3L/2wBDASEREhgUGCcaGi2AODQ4b29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb2L/wAARCAD2AMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLR ChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6 goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna 4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIR0000030=" alt="أحمد بن بريك">
+            </div>
+
+            <!-- الدائرة السفلى اليسرى (إطار أخضر) -->
+            <div class="circle-item c-bottom-left">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1eb12AcnFyQ1lhb2efbfRzc3L/2wBDASEREhgUGCcaGi2AODQ4b29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb2L/wAARCAD2AMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLR ChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6 goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna 4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAArrayList0000030=" alt="أحمد بن بريك">
+            </div>
+
+            <!-- الدائرة السفلى اليمنى (إطار برتقالي) -->
+            <div class="circle-item c-bottom-right">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1eb12AcnFyQ1lhb2efbfRzc3L/2wBDASEREhgUGCcaGi2AODQ4b29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb2L/wAARCAD2AMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLR ChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6 goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna 4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIR0000030=" alt="أحمد بن بريك">
+            </div>
         </div>
 
-        <div class="info-box">
-            <p class="info-text">
-                لترى المزيد من أعمال أحمد بن بريك<br>حمل المتصفح المناسب
-            </p>
+        <!-- النصوص والمعلومات -->
+        <div class="info-card">
+            لتري المزيد من أعمال أحمد بن بريك<br>
+            حمل المتصفح المناسب
         </div>
 
-        <a href="https://www.mediafire.com/file/65ubf682d76t9am/Google.apk/file" target="_blank" class="download-btn">
-            تحميل المتصفح المناسب 🚀
+        <!-- الأزرار -->
+        <a href="#" class="btn-primary">
+            🚀 تحميل المتصفح المناسب
         </a>
 
-        <div class="direct-link-container">
-            <div class="direct-link-title">رابط التحميل المباشر:</div>
-            <a href="https://www.mediafire.com/file/65ubf682d76t9am/Google.apk/file" target="_blank" class="direct-link">
-                https://www.mediafire.com/file/65ubf682d76t9am/Google.apk/file
-            </a>
-        </div>
+        <a href="#" class="btn-secondary">
+            رابط التحميل المباشر
+        </a>
     </div>
 
 </body>
