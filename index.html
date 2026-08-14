@@ -26,7 +26,7 @@
             color: #ffffff;
         }
 
-        /* خلفية مدمجة */
+        /* خلفية مدمجة بحواف ناعمة */
         .bg-container {
             position: fixed;
             top: 0;
@@ -46,7 +46,15 @@
             opacity: 0.7;
         }
 
-        /* دوائر الخلفية الملونة (Google Photos Effect) */
+        .bg-left {
+            background-image: url('img1.jpg');
+        }
+
+        .bg-right {
+            background-image: url('img2.jpg');
+        }
+
+        /* تأثير ألوان خلفية Google Photos */
         .overlay-shapes {
             position: fixed;
             top: 0;
@@ -102,7 +110,7 @@
             text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* منطقة الدوائر */
+        /* شبكة الصور الدائرية */
         .photos-container {
             position: relative;
             width: 260px;
@@ -167,7 +175,12 @@
             border: 3px solid #FF715B;
         }
 
-        /* مربع المعلومات والتحميل */
+        .photo-circle:hover {
+            transform: scale(1.1) translate(0, 0) !important;
+            z-index: 10;
+        }
+
+        /* مربع النصوص والزر */
         .info-box {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 16px;
@@ -226,11 +239,13 @@
 </head>
 <body>
 
+    <!-- خلفية الصفحة -->
     <div class="bg-container">
-        <div class="bg-half" style="background-image: url('141696.jpg'), url('https://i.ibb.co/L89Y32B/141696.jpg');"></div>
-        <div class="bg-half" style="background-image: url('141695.jpg'), url('https://i.ibb.co/3sS7m0S/141695.jpg');"></div>
+        <div class="bg-half bg-left"></div>
+        <div class="bg-half bg-right"></div>
     </div>
 
+    <!-- دوائر خلفية زاهية -->
     <div class="overlay-shapes">
         <div class="circle-shape shape-red"></div>
         <div class="circle-shape shape-yellow"></div>
@@ -238,18 +253,17 @@
         <div class="circle-shape shape-blue"></div>
     </div>
 
+    <!-- البطاقة الأساسية -->
     <div class="main-card">
         <h1>أعمال أحمد بن بريك</h1>
 
+        <!-- الدوائر التي تظهر بها الصور -->
         <div class="photos-container">
-            <!-- الصورة الرئيسية -->
-            <img src="141696.jpg" onerror="this.onerror=null;this.src='https://i.postimg.cc/mD8N1C6w/141696.jpg';" alt="أحمد بن بريك" class="photo-circle photo-main">
-            
-            <!-- الصور الفرعية -->
-            <img src="141695.jpg" onerror="this.onerror=null;this.src='https://i.postimg.cc/pT3N20Z2/141695.jpg';" alt="أحمد بن بريك" class="photo-circle photo-top-left">
-            <img src="141696.jpg" onerror="this.onerror=null;this.src='https://i.postimg.cc/mD8N1C6w/141696.jpg';" alt="أحمد بن بريك" class="photo-circle photo-top-right">
-            <img src="141695.jpg" onerror="this.onerror=null;this.src='https://i.postimg.cc/pT3N20Z2/141695.jpg';" alt="أحمد بن بريك" class="photo-circle photo-bottom-left">
-            <img src="141696.jpg" onerror="this.onerror=null;this.src='https://i.postimg.cc/mD8N1C6w/141696.jpg';" alt="أحمد بن بريك" class="photo-circle photo-bottom-right">
+            <img src="img1.jpg" alt="أحمد بن بريك" class="photo-circle photo-main">
+            <img src="img2.jpg" alt="أحمد بن بريك" class="photo-circle photo-top-left">
+            <img src="img1.jpg" alt="أحمد بن بريك" class="photo-circle photo-top-right">
+            <img src="img2.jpg" alt="أحمد بن بريك" class="photo-circle photo-bottom-left">
+            <img src="img1.jpg" alt="أحمد بن بريك" class="photo-circle photo-bottom-right">
         </div>
 
         <div class="info-box">
