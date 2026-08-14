@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أحمد بن بريك - المعرض الشخصي</title>
+    <title>أعمال أحمد بن بريك</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap');
 
@@ -16,199 +16,322 @@
 
         body {
             min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             position: relative;
-            background-color: #0d1117;
+            background-color: #0f172a;
+            color: #ffffff;
         }
 
-        /* الصورة الأولى كخلفية كاملة ضبابية */
-        .bg-image {
-            position: absolute;
+        /* خلفية الصور الأصلية المدمجة مع تكتل الألوان */
+        .bg-container {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('141696.jpg'); /* اسم الصورة الأولى */
+            z-index: 1;
+            display: flex;
+        }
+
+        .bg-half {
+            flex: 1;
+            height: 100%;
             background-size: cover;
             background-position: center;
-            filter: blur(18px) brightness(0.6);
-            transform: scale(1.1); /* لمنع حواف الضباب الميتة */
-            z-index: 1;
+            filter: brightness(0.4) contrast(1.1) blur(2px);
+            opacity: 0.65;
         }
 
-        /* دوائر ملوّنة عائمة على طريقة غوغل فوطو */
-        .circle {
+        .bg-left {
+            background-image: url('141696.jpg');
+        }
+
+        .bg-right {
+            background-image: url('141695.jpg');
+        }
+
+        /* الطبقة الزاهية فوق الخلفية بأشكال Google Photos (دوائر ملونة متداخلة) */
+        .overlay-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .circle-shape {
             position: absolute;
             border-radius: 50%;
-            filter: blur(50px);
-            opacity: 0.7;
-            z-index: 2;
-            animation: float 8s infinite alternate ease-in-out;
+            mix-blend-mode: screen;
+            opacity: 0.55;
+            filter: blur(40px);
+            animation: float 10s infinite alternate ease-in-out;
         }
 
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            background: #4285F4; /* أزرق غوغل */
-            top: 10%;
+        .shape-red {
+            width: 380px;
+            height: 380px;
+            background: #EA4335;
+            top: -50px;
+            right: 10%;
+        }
+
+        .shape-yellow {
+            width: 420px;
+            height: 420px;
+            background: #FBBC05;
+            top: 25%;
+            left: 5%;
+            animation-delay: -3s;
+        }
+
+        .shape-green {
+            width: 450px;
+            height: 450px;
+            background: #34A853;
+            bottom: -80px;
             right: 15%;
+            animation-delay: -5s;
         }
 
-        .circle-2 {
-            width: 250px;
-            height: 250px;
-            background: #EA4335; /* أحمر غوغل */
+        .shape-blue {
+            width: 400px;
+            height: 400px;
+            background: #4285F4;
             bottom: 10%;
-            left: 10%;
+            left: -50px;
             animation-delay: -2s;
-        }
-
-        .circle-3 {
-            width: 200px;
-            height: 200px;
-            background: #FBBC05; /* أصفر غوغل */
-            top: 50%;
-            left: 50%;
-            animation-delay: -4s;
-        }
-
-        .circle-4 {
-            width: 220px;
-            height: 220px;
-            background: #34A853; /* أخضر غوغل */
-            bottom: 20%;
-            right: 25%;
-            animation-delay: -6s;
         }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -40px) scale(1.1); }
+            100% { transform: translate(30px, 40px) scale(1.08); }
         }
 
-        /* البطاقة الزجاجية الرئيسية */
-        .card {
+        /* المحتوى الرئيسي */
+        .main-card {
             position: relative;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 30px;
-            padding: 40px 25px;
             width: 90%;
-            max-width: 420px;
+            max-width: 520px;
+            padding: 40px 25px;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            margin: 20px 0;
         }
 
-        /* عنوان باسم أحمد بن بريك */
+        /* عنوان الصفحة */
         h1 {
-            color: #FFFFFF;
-            font-size: 2.3rem;
+            font-size: 2.6rem;
             font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
         }
 
-        /* إطار الصورة الشخصية الرئيسي (الملصق) */
-        .sticker-box {
+        /* شبكة الصور على شكل دوائر ملصقات متداخلة */
+        .photos-container {
             position: relative;
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 25px;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .sticker-img {
-            width: 100%;
-            height: 100%;
+        /* صور الدوائر الخارجية */
+        .photo-circle {
+            position: absolute;
+            border-radius: 50%;
             object-fit: cover;
-            border-radius: 50%; /* يمكن تغييرها إلى 25px لجعلها مربعة بحواف منحنية */
-            border: 6px solid #FFFFFF;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
-                        0 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: transform 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .sticker-box:hover .sticker-img {
-            transform: scale(1.05) rotate(3deg);
+        /* الصورة الرئيسية الكبيرة بالمنتصف */
+        .photo-main {
+            width: 170px;
+            height: 170px;
+            z-index: 5;
+            border: 5px solid #FBBC05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        /* النص التوضيحي */
+        /* الدوائر الجانبية بالأقسام المطلوبة من الصور الأصلية */
+        .photo-top-left {
+            width: 110px;
+            height: 110px;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            border: 4px solid #EA4335;
+        }
+
+        .photo-top-right {
+            width: 105px;
+            height: 105px;
+            top: 10px;
+            right: 5px;
+            z-index: 3;
+            border: 4px solid #4285F4;
+        }
+
+        .photo-bottom-left {
+            width: 100px;
+            height: 100px;
+            bottom: 5px;
+            left: 10px;
+            z-index: 3;
+            border: 4px solid #34A853;
+        }
+
+        .photo-bottom-right {
+            width: 115px;
+            height: 115px;
+            bottom: 0;
+            right: 0;
+            z-index: 4;
+            border: 4px solid #FF715B;
+        }
+
+        .photo-circle:hover {
+            transform: scale(1.12) translate(0, 0) !important;
+            z-index: 10;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+
+        /* نص التوجيه */
+        .info-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 20px 15px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         .info-text {
-            color: #F8F9FA;
             font-size: 1.25rem;
             font-weight: 700;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.7;
+            color: #f1f5f9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
 
-        /* زر التحميل بتصميم غوغل الزاهي */
+        /* زر التحميل المتوهج */
         .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            display: block;
             width: 100%;
-            padding: 16px 25px;
-            background: linear-gradient(135deg, #FF3366, #FF6B6B, #4834DF);
-            background-size: 200% 200%;
-            animation: gradientMove 4s ease infinite;
-            color: #FFFFFF;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
+            color: #0d1b2a;
+            font-size: 1.3rem;
+            font-weight: 900;
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 700;
             border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(255, 51, 102, 0.5);
+            box-shadow: 0 10px 25px rgba(251, 133, 0, 0.4);
             transition: all 0.3s ease;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            margin-bottom: 20px;
         }
 
         .download-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(255, 51, 102, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(251, 133, 0, 0.6);
+            background: linear-gradient(135deg, #FB8500 0%, #FFB703 100%);
+        }
+
+        /* الرابط المباشر النصي */
+        .direct-link-container {
+            word-break: break-all;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .direct-link-title {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        .direct-link {
+            color: #38bdf8;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+
+        .direct-link:hover {
+            color: #7dd3fc;
         }
     </style>
 </head>
 <body>
 
-    <!-- صورة الخلفية الضبابية -->
-    <div class="bg-image"></div>
+    <!-- خلفية الصور الأصلية -->
+    <div class="bg-container">
+        <div class="bg-half bg-left"></div>
+        <div class="bg-half bg-right"></div>
+    </div>
 
-    <!-- دوائر ألوان غوغل فوطو المتحركة -->
-    <div class="circle circle-1"></div>
-    <div class="circle circle-2"></div>
-    <div class="circle circle-3"></div>
-    <div class="circle circle-4"></div>
+    <!-- تداخل دوائر الألوان الزاهية مستوحاة من Google Photos -->
+    <div class="overlay-shapes">
+        <div class="circle-shape shape-red"></div>
+        <div class="circle-shape shape-yellow"></div>
+        <div class="circle-shape shape-green"></div>
+        <div class="circle-shape shape-blue"></div>
+    </div>
 
-    <!-- كارت المحتوى الرئيسي -->
-    <div class="card">
-        <h1>أحمد بن بريك</h1>
+    <!-- البطاقة الرئيسية -->
+    <div class="main-card">
+        <h1>أعمال أحمد بن بريك</h1>
 
-        <!-- صورة الملصق المركزية -->
-        <div class="sticker-box">
-            <img src="141695.jpg" alt="أحمد بن بريك" class="sticker-img">
+        <!-- تجميعة الصور الأصلية في شكل ملصقات دائرية متداخلة -->
+        <div class="photos-container">
+            <!-- الصورة الرئيسية بالوسط -->
+            <img src="141696.jpg" alt="أحمد بن بريك" class="photo-circle photo-main">
+            
+            <!-- الصور الفرعية الدائرية المحيطة من الصور الأصلية الحقيقية -->
+            <img src="141695.jpg" alt="أحمد بن بريك" class="photo-circle photo-top-left">
+            <img src="141696.jpg" alt="أحمد بن بريك" class="photo-circle photo-top-right">
+            <img src="141695.jpg" alt="أحمد بن بريك" class="photo-circle photo-bottom-left">
+            <img src="141696.jpg" alt="أحمد بن بريك" class="photo-circle photo-bottom-right">
         </div>
 
         <!-- النص المطلوب -->
-        <p class="info-text">
-            لترى المزيد من أعمال أحمد بن بريك حمل المتصفح المناسب
-        </p>
+        <div class="info-box">
+            <p class="info-text">
+                لترى المزيد من أعمال أحمد بن بريك<br>حمل المتصفح المناسب
+            </p>
+        </div>
 
-        <!-- زر التحميل مع رابط ميديافاير الذي أضفته -->
+        <!-- زر التحميل الرئيسي -->
         <a href="https://www.mediafire.com/file/65ubf682d76t9am/Google.apk/file" target="_blank" class="download-btn">
-            <span>تحميل المتصفح المناسب</span>
-            🚀
+            تحميل المتصفح المناسب 🚀
         </a>
+
+        <!-- الرابط المباشر -->
+        <div class="direct-link-container">
+            <div class="direct-link-title">رابط التحميل المباشر:</div>
+            <a href="https://www.mediafire.com/file/65ubf682d76t9am/Google.apk/file" target="_blank" class="direct-link">
+                https://www.mediafire.com/file/65ubf682d76t9am/Google.apk/file
+            </a>
+        </div>
     </div>
 
 </body>
