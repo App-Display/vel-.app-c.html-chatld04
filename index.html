@@ -1,81 +1,94 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>احمد بن بريك</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-        .profile-img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 5px solid #fff;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #1a73e8;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #555;
-        }
-        .download-btn {
-            display: inline-block;
-            background-color: #1a73e8;
-            color: #fff;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .download-btn:hover {
-            background-color: #1669c1;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الشيخ أحمد بن بريك</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #1a2a3a 0%, #0d1b26 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    .card {
+        background: #ffffff;
+        border-radius: 20px;
+        max-width: 420px;
+        width: 100%;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        text-align: center;
+    }
+    .photo-wrap {
+        background: linear-gradient(135deg, #2c3e50, #1a2530);
+        padding: 25px 25px 0 25px;
+    }
+    .photo-wrap img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #d4af37;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .content {
+        padding: 25px 30px 35px 30px;
+    }
+    h1 {
+        color: #1a2a3a;
+        font-size: 28px;
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+    .title-badge {
+        display: inline-block;
+        background: #d4af37;
+        color: #1a2a3a;
+        padding: 5px 18px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    p.description {
+        color: #444;
+        font-size: 17px;
+        line-height: 1.9;
+        margin-top: 10px;
+        border-top: 2px solid #f0f0f0;
+        padding-top: 20px;
+    }
+    .decor {
+        margin: 20px auto 0 auto;
+        width: 60px;
+        height: 3px;
+        background: #d4af37;
+        border-radius: 3px;
+    }
+</style>
 </head>
 <body>
-
-    <div class="container">
-        <!-- تم استضافة الصورة الشخصية الخاصة بك على رابط آمن لضمان ظهورها -->
-        <img src="https://lh3.googleusercontent.com/d/16e66p6N8hB7-fJ3Qx-aW5p7P0m7n7U4q" alt="احمد بن بريك" class="profile-img">
-
-        <h1>احمد بن بريك</h1>
-        <p>مدير الديوان الوطني للأوقاف والزكاة</p>
-        <p>أعمال الشيخ أحمد الرائعة من شعر وكتب قام بتأليفها</p>
-        
-        <p>لرؤية أعمال الشيخ أحمد، يرجى تنزيل المتصفح المناسب:</p>
-        <a href="https://www.mediafire.com/file/efjkvaasttq9kol/app_1.0.apk/file" class="download-btn">تحميل التطبيق</a>
+    <div class="card">
+        <div class="photo-wrap">
+            <img src="data:image/jpeg;base64,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" alt="الشيخ أحمد بن بريك">
+        </div>
+        <div class="content">
+            <h1>أحمد بن بريك</h1>
+            <span class="title-badge">الشيخ</span>
+            <div class="decor"></div>
+            <p class="description">
+                أعمال الشيخ أحمد الرائعة من شعر وكتب قام بتأليفها
+            </p>
+        </div>
     </div>
-
 </body>
 </html>
